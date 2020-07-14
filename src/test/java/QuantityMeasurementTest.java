@@ -38,4 +38,9 @@ public class QuantityMeasurementTest {
         Assert.assertTrue(result);
     }
 
+    @Test
+    public void givenLengthInFeet_IfEqualsToYard_ShouldReturnTrue() throws QuantityException {
+        boolean result = quantityMeasurement.quantityCompare(3, 1, QuantityConversion.FEET_TO_YARD);
+        Assert.assertTrue(result);
+    }
 }
