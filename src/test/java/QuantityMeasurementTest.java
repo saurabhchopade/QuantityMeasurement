@@ -82,4 +82,11 @@ public class QuantityMeasurementTest {
         Assert.assertFalse(result);
     }
 
+    @Test
+    public void given1InchNotEqualTo1Yard_ShouldReturnFalse() {
+        Length length1 = new Length(1.0, Units.INCH);
+        Length length2 = new Length(1.0, Units.YARD);
+        boolean result = length1.compare(length2);
+        Assert.assertFalse(result);
+    }
 }
