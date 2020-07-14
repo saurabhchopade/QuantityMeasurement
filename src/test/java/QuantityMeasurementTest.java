@@ -27,4 +27,11 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(false, result);
     }
 
+    @Test
+    public void givenDoubleAnd1Feet_ShouldReturnFalse() {
+        double feet1 = 0.1;
+        Feet feet2 = new Feet(0.1);
+        boolean result = feet2.equals(feet1);
+        Assert.assertEquals(false, result);
+    }
 }
