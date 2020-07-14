@@ -67,11 +67,19 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given3FeetEqualTo1Yard_ShouldReturnFalse() {
+    public void given3FeetEqualTo1Yard_ShouldReturnTrue() {
         Length length1 = new Length(3.0, Units.FEET);
         Length length2 = new Length(1.0, Units.YARD);
         boolean result = length1.compare(length2);
         Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given1FeetNotEqualTo1Yard_ShouldReturnFalse() {
+        Length length1 = new Length(1.0, Units.FEET);
+        Length length2 = new Length(1.0, Units.YARD);
+        boolean result = length1.compare(length2);
+        Assert.assertFalse(result);
     }
 
 }
