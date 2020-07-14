@@ -57,14 +57,20 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenLengthInOneYard_CheckEqualToOneInchIfEquals_ShouldReturnTrue() throws QuantityException {
+    public void givenLengthInYard_CheckEqualToInchIfEquals_ShouldReturnTrue() throws QuantityException {
         boolean result = quantityMeasurement.quantityCompare(1, 36, QuantityConversion.YARD_TO_INCH);
         Assert.assertTrue(result);
     }
 
     @Test
-    public void givenLengthInOneInch_CheckEqualToOneYardIfEquals_ShouldReturnTrue() throws QuantityException {
+    public void givenLengthInInch_CheckEqualToYardIfEquals_ShouldReturnTrue() throws QuantityException {
         boolean result = quantityMeasurement.quantityCompare(36, 1, QuantityConversion.INCH_TO_YARD);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenLengthInYard_CheckEqualToFeetIfEquals_ShouldReturnTrue() throws QuantityException {
+        boolean result = quantityMeasurement.quantityCompare(1, 3, QuantityConversion.YARD_TO_FEET);
         Assert.assertTrue(result);
     }
 }
