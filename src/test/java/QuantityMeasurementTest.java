@@ -56,4 +56,12 @@ public class QuantityMeasurementTest {
         boolean result = length2.equals(length1);
         Assert.assertEquals(false, result);
     }
+
+    @Test
+    public void givenDoubleAnd1Inch_ShouldReturnFalse() {
+        double feet1 = 0.1;
+        Length length2 = new Length(0.1);
+        boolean result = length2.equals(feet1);
+        Assert.assertEquals(false, result);
+    }
 }
