@@ -24,4 +24,18 @@ public class QuantityMeasurementTest {
         boolean result = quantityMeasurement.quantityCompare(0, 0, QuantityConversion.FEET_TO_FEET);
         Assert.assertTrue(result);
     }
+
+
+    @Test
+    public void givenLengthInInch_IfEqualsThen_ShouldReturnBooleanValue() throws QuantityException {
+        boolean result = quantityMeasurement.quantityCompare(12, 1, QuantityConversion.INCH_TO_FEET);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenBothLengthsInInch_IfEqualsThen_ShouldReturnTrue() throws QuantityException {
+        boolean result = quantityMeasurement.quantityCompare(12, 12, QuantityConversion.INCH_TO_INCH);
+        Assert.assertTrue(result);
+    }
+
 }
