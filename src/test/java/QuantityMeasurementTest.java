@@ -55,4 +55,9 @@ public class QuantityMeasurementTest {
         boolean result = quantityMeasurement.quantityCompare(1, 1, QuantityConversion.INCH_TO_YARD);
         Assert.assertFalse(result);
     }
+    @Test
+    public void givenLengthInOneYard_CheckEqualToOneInchIfEquals_ShouldReturnTrue() throws QuantityException {
+        boolean result = quantityMeasurement.quantityCompare(1, 36, QuantityConversion.YARD_TO_INCH);
+        Assert.assertTrue(result);
+    }
 }
