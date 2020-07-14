@@ -41,4 +41,11 @@ public class QuantityMeasurementTest {
         Length length2 = new Length(1.0);
         Assert.assertEquals(length1, length2);
     }
+
+    @Test
+    public void given1InchAnd2Inch_ShouldReturnFalse() {
+        Length length1 = new Length(1.0);
+        Length length2 = new Length(2.0);
+        Assert.assertNotEquals(length1, length2);
+    }
 }
