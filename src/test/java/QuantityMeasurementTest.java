@@ -146,4 +146,12 @@ public class QuantityMeasurementTest {
         boolean result = length3.compare(length1, length2);
         Assert.assertTrue(result);
     }
+    @Test
+    public void given1feetAnd1FeetAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityIfEqual_ShouldReturnTrue() {
+        LengthConverter length1 = new LengthConverter(1.0, Units.FEET);
+        LengthConverter length2 = new LengthConverter(1.0, Units.FEET);
+        LengthConverter length3 = new LengthConverter(24.0, Units.INCH);
+        boolean result = length3.compare(length1, length2);
+        Assert.assertTrue(result);
+    }
 }
