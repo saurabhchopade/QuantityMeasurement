@@ -121,11 +121,21 @@ public class QuantityMeasurementTest {
         boolean result = length1.compare(length2);
         Assert.assertTrue(result);
     }
+
     @Test
     public void given2InchIfEqualTo5Cm_ShouldReturnTrue() {
         LengthConverter length1 = new LengthConverter(2.0, Units.INCH);
         LengthConverter length2 = new LengthConverter(5.08, Units.CM);
         boolean result = length1.compare(length2);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenTwoLengthsAfterAdding_IsEqualToProvidedLength_ShouldReturnTrue() {
+        LengthConverter length1 = new LengthConverter(2.0, Units.INCH);
+        LengthConverter length2 = new LengthConverter(2.0, Units.INCH);
+        LengthConverter length3 = new LengthConverter(4.0, Units.INCH);
+        boolean result = length3.compare(length1, length2);
         Assert.assertTrue(result);
     }
 }
