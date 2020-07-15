@@ -190,4 +190,12 @@ public class QuantityMeasurementTest {
         boolean result = weight3.compare(weight1, weight2);
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void given1GallonAnd3Point78Litre_CheckIFEquals_ShouldReturnTrue() {
+        UnitsConverter weight1 = new UnitsConverter(1.0, Units.GALLON);
+        UnitsConverter weight2 = new UnitsConverter(3.785, Units.LITRE);
+        boolean result = weight1.compare(weight2);
+        Assert.assertTrue(result);
+    }
 }
