@@ -206,4 +206,14 @@ public class QuantityMeasurementTest {
         boolean result = volume1.compare(volume2);
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void given1GallonAnd3Point785LitreAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityCheckIfEqual_ShouldReturnTrue() {
+        UnitsConverter volume1 = new UnitsConverter(1.0, Units.GALLON);
+        UnitsConverter volume2 = new UnitsConverter(3.785, Units.LITRE);
+        UnitsConverter volume3 = new UnitsConverter(7.57, Units.LITRE);
+        boolean result = volume3.compare(volume1, volume2);
+        Assert.assertTrue(result);
+    }
+
 }
