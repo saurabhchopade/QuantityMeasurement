@@ -6,13 +6,21 @@ public class Length {
     double value;
     Units units;
 
-
+    /**
+     * Constructor
+     * @param value
+     * @param units
+     */
     public Length(Double value, Units units) {
         this.units = units;
         this.value = value;
     }
 
-
+    /**
+     * Compare to lengths
+     * @param secondLength
+     * @return
+     */
     public boolean compare(Length secondLength) {
         Double value1 = this.units.getValue() * this.value;
         Double value2 = secondLength.units.getValue() * secondLength.value;
@@ -26,5 +34,4 @@ public class Length {
         Length length = (Length) o;
         return Double.compare(length.value, value) == 0;
     }
-
 }
