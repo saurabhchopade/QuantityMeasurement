@@ -4,9 +4,10 @@ import com.bridgelabz.quantitymeasurement.util.Units;
 
 import static java.lang.Math.round;
 
-public class LengthConverter {
+public class UnitsConverter {
     double value;
     Units units;
+
 
     /**
      * Constructor
@@ -14,7 +15,7 @@ public class LengthConverter {
      * @param value
      * @param units
      */
-    public LengthConverter(Double value, Units units) {
+    public UnitsConverter(Double value, Units units) {
         this.units = units;
         this.value = value;
     }
@@ -22,12 +23,12 @@ public class LengthConverter {
     /**
      * Compare to lengths
      *
-     * @param secondLength
+     * @param that
      * @return
      */
-    public boolean compare(LengthConverter secondLength) {
+    public boolean compare(UnitsConverter that) {
         Double length1 = (double) round(this.units.getValue() * this.value);
-        Double length2 = (double) round(secondLength.units.getValue() * secondLength.value);
+        Double length2 = (double) round(that.units.getValue() * that.value);
         return (length1.compareTo(length2) == 0);
     }
 
@@ -38,7 +39,7 @@ public class LengthConverter {
      * @param quantity2
      * @return
      */
-    public boolean compare(LengthConverter quantity1, LengthConverter quantity2) {
+    public boolean compare(UnitsConverter quantity1, UnitsConverter quantity2) {
         Double length1 = (double) round(this.units.getValue() * this.value);
         Double length2 = (double) round(mergeQuantity(quantity1, quantity2));
         return (length1.compareTo(length2) == 0);
@@ -51,7 +52,7 @@ public class LengthConverter {
      * @param quantity2
      * @return
      */
-    public Double mergeQuantity(LengthConverter quantity1, LengthConverter quantity2) {
+    public Double mergeQuantity(UnitsConverter quantity1, UnitsConverter quantity2) {
         Double length1 = quantity1.units.getValue() * quantity1.value;
         Double length2 = quantity2.units.getValue() * quantity2.value;
         return length1 + length2;
@@ -61,7 +62,7 @@ public class LengthConverter {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LengthConverter length = (LengthConverter) o;
+        UnitsConverter length = (UnitsConverter) o;
         return Double.compare(length.value, value) == 0;
     }
 }
