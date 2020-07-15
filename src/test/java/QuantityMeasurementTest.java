@@ -105,4 +105,12 @@ public class QuantityMeasurementTest {
         boolean result = length1.compare(length2);
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void given1YardIfEqualTo3Feet_ShouldReturnTrue() {
+        Length length1 = new Length(1.0, Units.YARD);
+        Length length2 = new Length(3.0, Units.FEET);
+        boolean result = length1.compare(length2);
+        Assert.assertTrue(result);
+    }
 }
