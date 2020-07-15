@@ -113,4 +113,12 @@ public class QuantityMeasurementTest {
         boolean result = length1.compare(length2);
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void given2InchIfEqualTo5Cm_ShouldReturnTrue() {
+        Length length1 = new Length(1.0, Units.INCH);
+        Length length2 = new Length(5.0, Units.CM);
+        boolean result = length1.compare(length2);
+        Assert.assertTrue(result);
+    }
 }
