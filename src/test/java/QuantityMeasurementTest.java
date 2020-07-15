@@ -216,4 +216,12 @@ public class QuantityMeasurementTest {
         Assert.assertTrue(result);
     }
 
+    @Test
+    public void given1LitreAnd1000mLAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityCheckIfEqual_ShouldReturnTrue() {
+        UnitsConverter volume1 = new UnitsConverter(1.0, Units.LITRE);
+        UnitsConverter volume2 = new UnitsConverter(1000.0, Units.ML);
+        UnitsConverter volume3 = new UnitsConverter(2.0, Units.LITRE);
+        boolean result = volume3.compare(volume1, volume2);
+        Assert.assertTrue(result);
+    }
 }
