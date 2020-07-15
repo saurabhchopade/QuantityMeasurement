@@ -181,4 +181,13 @@ public class QuantityMeasurementTest {
         boolean result = weight1.compare(weight2);
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void given1TonneAnd1000GmAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityCheckIfEqual_ShouldReturnTrue() {
+        UnitsConverter weight1 = new UnitsConverter(1.0, Units.TONNE);
+        UnitsConverter weight2 = new UnitsConverter(1000.0, Units.GRAM);
+        UnitsConverter weight3 = new UnitsConverter(1001.0, Units.KG);
+        boolean result = weight3.compare(weight1, weight2);
+        Assert.assertTrue(result);
+    }
 }
