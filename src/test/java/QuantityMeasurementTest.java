@@ -167,10 +167,18 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1KGAnd1000gm_IsEqual_ShouldReturnTrue() {
-        UnitsConverter length1 = new UnitsConverter(1.0, Units.KG);
-        UnitsConverter length2 = new UnitsConverter(1000.0,Units.GRAM);
-        boolean result = length1.compare(length2);
+    public void given1KGAnd1000gm_CheckIfEqual_ShouldReturnTrue() {
+        UnitsConverter weight1 = new UnitsConverter(1.0, Units.KG);
+        UnitsConverter weight2 = new UnitsConverter(1000.0, Units.GRAM);
+        boolean result = weight1.compare(weight2);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given1TonneAnd1000Kg_CheckIFEquals_ShouldReturnTrue() {
+        UnitsConverter weight1 = new UnitsConverter(1.0, Units.TONNE);
+        UnitsConverter weight2 = new UnitsConverter(1000.0, Units.KG);
+        boolean result = weight1.compare(weight2);
         Assert.assertTrue(result);
     }
 }
