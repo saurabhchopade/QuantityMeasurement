@@ -97,4 +97,12 @@ public class QuantityMeasurementTest {
         boolean result = length1.compare(length2);
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void given36InchIfEqualTo1Yard_ShouldReturnTrue() {
+        Length length1 = new Length(36.0, Units.INCH);
+        Length length2 = new Length(1.0, Units.YARD);
+        boolean result = length1.compare(length2);
+        Assert.assertTrue(result);
+    }
 }
