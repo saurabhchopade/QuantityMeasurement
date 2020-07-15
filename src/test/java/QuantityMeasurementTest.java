@@ -193,9 +193,17 @@ public class QuantityMeasurementTest {
 
     @Test
     public void given1GallonAnd3Point78Litre_CheckIFEquals_ShouldReturnTrue() {
-        UnitsConverter weight1 = new UnitsConverter(1.0, Units.GALLON);
-        UnitsConverter weight2 = new UnitsConverter(3.785, Units.LITRE);
-        boolean result = weight1.compare(weight2);
+        UnitsConverter volume1 = new UnitsConverter(1.0, Units.GALLON);
+        UnitsConverter volume2 = new UnitsConverter(3.785, Units.LITRE);
+        boolean result = volume1.compare(volume2);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given1litreAnd100Ml_CheckIFEquals_ShouldReturnTrue() {
+        UnitsConverter volume1 = new UnitsConverter(1.0, Units.LITRE);
+        UnitsConverter volume2 = new UnitsConverter(1000.0, Units.ML);
+        boolean result = volume1.compare(volume2);
         Assert.assertTrue(result);
     }
 }
