@@ -1,5 +1,6 @@
+import com.bridgelabz.quantitymeasurement.enums.Units;
+import com.bridgelabz.quantitymeasurement.exception.QuantityException;
 import com.bridgelabz.quantitymeasurement.service.UnitsConverter;
-import com.bridgelabz.quantitymeasurement.util.Units;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -131,7 +132,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenTwoLengthsAfterAdding_IsEqualToProvidedLength_ShouldReturnTrue() {
+    public void givenTwoLengthsAfterAdding_IsEqualToProvidedLength_ShouldReturnTrue() throws QuantityException {
         UnitsConverter length1 = new UnitsConverter(2.0, Units.INCH);
         UnitsConverter length2 = new UnitsConverter(2.0, Units.INCH);
         UnitsConverter length3 = new UnitsConverter(4.0, Units.INCH);
@@ -140,7 +141,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1feetAnd2InchAfterMergingBothQuantity_IsEqualToProvidedThirdQuantity_ShouldReturnTrue() {
+    public void given1feetAnd2InchAfterMergingBothQuantity_IsEqualToProvidedThirdQuantity_ShouldReturnTrue() throws QuantityException {
         UnitsConverter length1 = new UnitsConverter(1.0, Units.FEET);
         UnitsConverter length2 = new UnitsConverter(2.0, Units.INCH);
         UnitsConverter length3 = new UnitsConverter(14.0, Units.INCH);
@@ -149,7 +150,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1feetAnd1FeetAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityIfEqual_ShouldReturnTrue() {
+    public void given1feetAnd1FeetAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityIfEqual_ShouldReturnTrue() throws QuantityException {
         UnitsConverter length1 = new UnitsConverter(1.0, Units.FEET);
         UnitsConverter length2 = new UnitsConverter(1.0, Units.FEET);
         UnitsConverter length3 = new UnitsConverter(24.0, Units.INCH);
@@ -158,7 +159,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given2InchAnd2point5CmAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityIfEqual_ShouldReturnTrue() {
+    public void given2InchAnd2point5CmAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityIfEqual_ShouldReturnTrue() throws QuantityException {
         UnitsConverter length1 = new UnitsConverter(2.0, Units.INCH);
         UnitsConverter length2 = new UnitsConverter(2.5, Units.CM);
         UnitsConverter length3 = new UnitsConverter(3.0, Units.INCH);
@@ -183,7 +184,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1TonneAnd1000GmAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityCheckIfEqual_ShouldReturnTrue() {
+    public void given1TonneAnd1000GmAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityCheckIfEqual_ShouldReturnTrue() throws QuantityException {
         UnitsConverter weight1 = new UnitsConverter(1.0, Units.TONNE);
         UnitsConverter weight2 = new UnitsConverter(1000.0, Units.GRAM);
         UnitsConverter weight3 = new UnitsConverter(1001.0, Units.KG);
@@ -208,7 +209,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1GallonAnd3Point785LitreAfterMergingBothQuantity_IsEqualToThirdQuantityCheckIfEqual_ShouldReturnTrue() {
+    public void given1GallonAnd3Point785LitreAfterMergingBothQuantity_IsEqualToThirdQuantityCheckIfEqual_ShouldReturnTrue() throws QuantityException {
         UnitsConverter volume1 = new UnitsConverter(1.0, Units.GALLON);
         UnitsConverter volume2 = new UnitsConverter(3.785, Units.LITRE);
         UnitsConverter volume3 = new UnitsConverter(7.57, Units.LITRE);
@@ -217,11 +218,25 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1LitreAnd1000mLAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityCheckIfEqual_ShouldReturnTrue() {
+    public void given1LitreAnd1000mLAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityCheckIfEqual_ShouldReturnTrue() throws QuantityException {
         UnitsConverter volume1 = new UnitsConverter(1.0, Units.LITRE);
         UnitsConverter volume2 = new UnitsConverter(1000.0, Units.ML);
         UnitsConverter volume3 = new UnitsConverter(2.0, Units.LITRE);
         boolean result = volume3.compare(volume1, volume2);
         Assert.assertTrue(result);
+
+    }
+
+    @Test
+    public void givenAllNullValues_ShouldHandleException() {
+        UnitsConverter volume1 = null;
+        UnitsConverter volume2 = new UnitsConverter(5.0, Units.ML);
+        UnitsConverter volume3 = new UnitsConverter(5.0, Units.LITRE);
+        try {
+            boolean result = volume3.compare(volume1, volume2);
+            Assert.assertTrue(result);
+        } catch (QuantityException e) {
+            Assert.assertEquals(QuantityException.ExceptionType.GIVENNULLVALUE, e.type);
+        }
     }
 }
