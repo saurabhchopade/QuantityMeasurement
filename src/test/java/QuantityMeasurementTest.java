@@ -68,7 +68,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenFeetAndYard_BothAreEqual_ShouldReturnTrue() {
+    public void givenFeetAndYard_BothAreEqual_ShouldReturnTrue() throws QuantityException {
         QuantityMeasurement length1 = new QuantityMeasurement(3.0, Units.FEET);
         QuantityMeasurement length2 = new QuantityMeasurement(1.0, Units.YARD);
         boolean result = length1.compare(length2);
@@ -76,7 +76,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenFeetAndYard_IfBothAreNotEqual_ShouldReturnFalse() {
+    public void givenFeetAndYard_IfBothAreNotEqual_ShouldReturnFalse() throws QuantityException {
         QuantityMeasurement length1 = new QuantityMeasurement(1.0, Units.FEET);
         QuantityMeasurement length2 = new QuantityMeasurement(1.0, Units.YARD);
         boolean result = length1.compare(length2);
@@ -84,7 +84,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenInchAndYard_IfBothNotEqual_ShouldReturnFalse() {
+    public void givenInchAndYard_IfBothNotEqual_ShouldReturnFalse() throws QuantityException {
         QuantityMeasurement length1 = new QuantityMeasurement(1.0, Units.INCH);
         QuantityMeasurement length2 = new QuantityMeasurement(1.0, Units.YARD);
         boolean result = length1.compare(length2);
@@ -92,7 +92,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenYardAndInch_IfBothAreEqual_ShouldReturnTrue() {
+    public void givenYardAndInch_IfBothAreEqual_ShouldReturnTrue() throws QuantityException {
         QuantityMeasurement length1 = new QuantityMeasurement(1.0, Units.YARD);
         QuantityMeasurement length2 = new QuantityMeasurement(36.0, Units.INCH);
         boolean result = length1.compare(length2);
@@ -100,7 +100,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenInchAndYard_IfBothAreEqual_ShouldReturnTrue() {
+    public void givenInchAndYard_IfBothAreEqual_ShouldReturnTrue() throws QuantityException {
         QuantityMeasurement length1 = new QuantityMeasurement(36.0, Units.INCH);
         QuantityMeasurement length2 = new QuantityMeasurement(1.0, Units.YARD);
         boolean result = length1.compare(length2);
@@ -108,7 +108,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenYardAndFeet_IfBothAreEqual__ShouldReturnTrue() {
+    public void givenYardAndFeet_IfBothAreEqual__ShouldReturnTrue() throws QuantityException {
         QuantityMeasurement length1 = new QuantityMeasurement(1.0, Units.YARD);
         QuantityMeasurement length2 = new QuantityMeasurement(3.0, Units.FEET);
         boolean result = length1.compare(length2);
@@ -116,7 +116,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenInchAndCm_IfBothAreEqual_ShouldReturnTrue() {
+    public void givenInchAndCm_IfBothAreEqual_ShouldReturnTrue() throws QuantityException {
         QuantityMeasurement length1 = new QuantityMeasurement(1.0, Units.INCH);
         QuantityMeasurement length2 = new QuantityMeasurement(2.54, Units.CM);
         boolean result = length1.compare(length2);
@@ -124,7 +124,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenInchAndCm_IfEqual_ShouldReturnTrue() {
+    public void givenInchAndCm_IfEqual_ShouldReturnTrue() throws QuantityException {
         QuantityMeasurement length1 = new QuantityMeasurement(-2.0, Units.INCH);
         QuantityMeasurement length2 = new QuantityMeasurement(5.08, Units.CM);
         boolean result = length1.compare(length2);
@@ -168,7 +168,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenKGAndGm_CheckIfEqual_ShouldReturnTrue() {
+    public void givenKGAndGm_CheckIfEqual_ShouldReturnTrue() throws QuantityException {
         QuantityMeasurement weight1 = new QuantityMeasurement(1.0, Units.KG);
         QuantityMeasurement weight2 = new QuantityMeasurement(1000.0, Units.GRAM);
         boolean result = weight1.compare(weight2);
@@ -176,7 +176,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenTonneAndKg_CheckIFEquals_ShouldReturnTrue() {
+    public void givenTonneAndKg_CheckIFEquals_ShouldReturnTrue() throws QuantityException {
         QuantityMeasurement weight1 = new QuantityMeasurement(1.0, Units.TONNE);
         QuantityMeasurement weight2 = new QuantityMeasurement(1000.0, Units.KG);
         boolean result = weight1.compare(weight2);
@@ -193,7 +193,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenGallonAndPoint78Litre_CheckIFEquals_ShouldReturnTrue() {
+    public void givenGallonAndPoint78Litre_CheckIFEquals_ShouldReturnTrue() throws QuantityException {
         QuantityMeasurement volume1 = new QuantityMeasurement(1.0, Units.GALLON);
         QuantityMeasurement volume2 = new QuantityMeasurement(3.785, Units.LITRE);
         boolean result = volume1.compare(volume2);
@@ -201,7 +201,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenLitreAndMl_CheckIFEquals_ShouldReturnTrue() {
+    public void givenLitreAndMl_CheckIFEquals_ShouldReturnTrue() throws QuantityException {
         QuantityMeasurement volume1 = new QuantityMeasurement(1.0, Units.LITRE);
         QuantityMeasurement volume2 = new QuantityMeasurement(1000.0, Units.ML);
         boolean result = volume1.compare(volume2);
@@ -241,10 +241,15 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenCelciusAndFahrenheit_IfEquals_ShouldReturnTrue() {
-        QuantityMeasurement length1 = new QuantityMeasurement(100.0, Units.CELCIUS);
-        QuantityMeasurement length2 = new QuantityMeasurement(212.0, Units.FAHRENHEIT);
-        boolean result = length1.compare(length2);
-        Assert.assertFalse(result);
+    public void givenLitreAndInch_IfDifferentTypeQuantity_ShouldReturnFalse() throws QuantityException {
+        try {
+            QuantityMeasurement length1 = new QuantityMeasurement(1.0, Units.LITRE);
+            QuantityMeasurement length2 = new QuantityMeasurement(36.0, Units.INCH);
+            boolean result = length1.compare(length2);
+            Assert.assertFalse(result);
+        } catch (QuantityException e) {
+            Assert.assertEquals(QuantityException.ExceptionType.ILLEGALTYPE, e.type);
+            System.out.println(e.getMessage());
+        }
     }
 }
