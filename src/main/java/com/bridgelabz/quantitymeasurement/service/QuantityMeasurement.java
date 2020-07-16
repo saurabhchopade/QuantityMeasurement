@@ -28,26 +28,39 @@ public class QuantityMeasurement extends AddQuantity {
      * @param that
      * @return
      */
-    public boolean compare(QuantityMeasurement that) {
-        Double length1 = (double) abs(round(this.units.getValue() * this.value));
-        Double length2 = (double) abs(round(that.units.getValue() * that.value));
-        return (length1.compareTo(length2) == 0);
+    public boolean compare(QuantityMeasurement that) throws QuantityException {
+        if (that.units.type == this.units.type) {
+            switch (that.units.type) {
+                case TEMPERATURE:
+                    Double quantity1 = (double) abs(round((this.units.getValue() * this.value + 32)));
+                    Double quantity2 = (double) abs(round(that.units.getValue() * that.value));
+                    return (quantity1.compareTo(quantity2) == 0);
+                default:
+                    Double length1 = (double) abs(round(this.units.getValue() * this.value));
+                    Double length2 = (double) abs(round(that.units.getValue() * that.value));
+                    return (length1.compareTo(length2) == 0);
+            }
+        }
+        throw new QuantityException(QuantityException.ExceptionType.ILLEGALTYPE, "PLEASE PROVIDE SIMILAR TYPE QUANTITY");
     }
 
     /**
      * Compare is for comparing Quantity after merging two quantity to each other
      *
-     * @param quantity1
-     * @param quantity2
+     * @param that1
+     * @param that2
      * @return
      */
-    public boolean compare(QuantityMeasurement quantity1, QuantityMeasurement quantity2) throws QuantityException {
+    public boolean compare(QuantityMeasurement that1, QuantityMeasurement that2) throws QuantityException {
         try {
-            Double length1 = (double) round(this.units.getValue() * this.value);
-            Double length2 = (double) round(addTwoQuantity(quantity1, quantity2));
-            return (length1.compareTo(length2) == 0);
+            if (that1.units.type == that2.units.type) {
+                Double length1 = (double) round(this.units.getValue() * this.value);
+                Double length2 = (double) round(addTwoQuantity(that1, that2));
+                return (length1.compareTo(length2) == 0);
+            }
+            throw new QuantityException(QuantityException.ExceptionType.ILLEGALTYPE, "PLEASE PROVIDE SIMILAR TYPE QUANTITY");
         } catch (NullPointerException e) {
-            throw new QuantityException(QuantityException.ExceptionType.GIVENNULLVALUE, "Enter Proper input");
+            throw new QuantityException(QuantityException.ExceptionType.GIVENNULLVALUE, "ENTER PROPER INPUT");
         }
     }
 

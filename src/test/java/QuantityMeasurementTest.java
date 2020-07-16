@@ -266,4 +266,20 @@ public class QuantityMeasurementTest {
             System.out.println(e.getMessage());
         }
     }
+
+    @Test
+    public void givenCelciusAndFahrenheit_IfEquals_ShouldReturnTrue() throws QuantityException {
+        QuantityMeasurement length1 = new QuantityMeasurement(100.0, Units.CELCIUS);
+        QuantityMeasurement length2 = new QuantityMeasurement(212.0, Units.FAHRENHEIT);
+        boolean result = length1.compare(length2);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenFahrenheitAndCelcius_IfEquals_ShouldReturnTrue() throws QuantityException {
+        QuantityMeasurement length1 = new QuantityMeasurement(5.0, Units.FAHRENHEIT);
+        QuantityMeasurement length2 = new QuantityMeasurement(-15.0, Units.CELCIUS);
+        boolean result = length2.compare(length1);
+        Assert.assertTrue(result);
+    }
 }
