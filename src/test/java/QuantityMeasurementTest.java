@@ -7,67 +7,67 @@ public class QuantityMeasurementTest {
 
 
     @Test
-    public void given0FeetAnd0Feet_ShouldReturnTrue() {
+    public void given0FeetAnd0Feet_IfBothAreEqual_ShouldReturnTrue() {
         UnitsConverter length1 = new UnitsConverter(0.0, Units.FEET);
         UnitsConverter length2 = new UnitsConverter(0.0, Units.FEET);
         Assert.assertEquals(length1, length2);
     }
 
     @Test
-    public void given0FeetAnd1Feet_ShouldReturnFalse() {
+    public void given0FeetAnd1Feet_IfBothAreNotEqual_ShouldReturnFalse() {
         UnitsConverter length1 = new UnitsConverter(0.0, Units.FEET);
         UnitsConverter length2 = new UnitsConverter(0.1, Units.FEET);
         Assert.assertNotEquals(length1, length2);
     }
 
     @Test
-    public void givenNullFeetAnd1Feet_ShouldReturnFalse() {
+    public void givenNullFeetAnd1Feet_IfBothTypeNotEqual_ShouldReturnFalse() {
         UnitsConverter length1 = null;
         UnitsConverter length2 = new UnitsConverter(0.1, Units.FEET);
         boolean result = length2.equals(length1);
-        Assert.assertEquals(false, result);
+        Assert.assertFalse(result);
     }
 
     @Test
-    public void givenDoubleAnd1Feet_ShouldReturnFalse() {
+    public void givenDoubleAnd1Feet_IfBothTypeNotEqual_ShouldReturnFalse() {
         double length1 = 0.1;
         UnitsConverter length2 = new UnitsConverter(0.1, Units.FEET);
         boolean result = length2.equals(length1);
-        Assert.assertEquals(false, result);
+        Assert.assertFalse(result);
     }
 
     @Test
-    public void given0InchAnd0Inch_ShouldReturnTrue() {
+    public void given0InchAnd0Inch_IfBothAreEqual_ShouldReturnTrue() {
         UnitsConverter length1 = new UnitsConverter(1.0, Units.INCH);
         UnitsConverter length2 = new UnitsConverter(1.0, Units.INCH);
         Assert.assertEquals(length1, length2);
     }
 
     @Test
-    public void given1InchAnd2Inch_ShouldReturnFalse() {
+    public void given1InchAnd2Inch_IfBothAreNotEqual_ShouldReturnFalse() {
         UnitsConverter length1 = new UnitsConverter(1.0, Units.INCH);
         UnitsConverter length2 = new UnitsConverter(2.0, Units.INCH);
         Assert.assertNotEquals(length1, length2);
     }
 
     @Test
-    public void givenNullInchAnd1Inch_ShouldReturnFalse() {
+    public void givenNullInchAnd1Inch_IfBothNotMatch_ShouldReturnFalse() {
         UnitsConverter length1 = null;
         UnitsConverter length2 = new UnitsConverter(0.1, Units.INCH);
         boolean result = length2.equals(length1);
-        Assert.assertEquals(false, result);
+        Assert.assertFalse(result);
     }
 
     @Test
-    public void givenDoubleAnd1Inch_ShouldReturnFalse() {
+    public void givenDoubleAnd1Inch_IfBothTypeNotEqual_ShouldReturnFalse() {
         double length1 = 0.1;
         UnitsConverter length2 = new UnitsConverter(0.1, Units.INCH);
         boolean result = length2.equals(length1);
-        Assert.assertEquals(false, result);
+        Assert.assertFalse(result);
     }
 
     @Test
-    public void given3FeetEqualTo1Yard_ShouldReturnTrue() {
+    public void given3FeetAnd1Yard_BothAreEqual_ShouldReturnTrue() {
         UnitsConverter length1 = new UnitsConverter(3.0, Units.FEET);
         UnitsConverter length2 = new UnitsConverter(1.0, Units.YARD);
         boolean result = length1.compare(length2);
@@ -75,7 +75,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1FeetNotEqualTo1Yard_ShouldReturnFalse() {
+    public void given1FeetAnd1Yard_IfBothAreNotEqual_ShouldReturnFalse() {
         UnitsConverter length1 = new UnitsConverter(1.0, Units.FEET);
         UnitsConverter length2 = new UnitsConverter(1.0, Units.YARD);
         boolean result = length1.compare(length2);
@@ -83,7 +83,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1InchNotEqualTo1Yard_ShouldReturnFalse() {
+    public void given1InchAnd1Yard_IfBothNotEqual_ShouldReturnFalse() {
         UnitsConverter length1 = new UnitsConverter(1.0, Units.INCH);
         UnitsConverter length2 = new UnitsConverter(1.0, Units.YARD);
         boolean result = length1.compare(length2);
@@ -91,7 +91,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1YardEqualTo36inch_ShouldReturnTrue() {
+    public void given1YardAnd36inch_IfBothAreEqual_ShouldReturnTrue() {
         UnitsConverter length1 = new UnitsConverter(1.0, Units.YARD);
         UnitsConverter length2 = new UnitsConverter(36.0, Units.INCH);
         boolean result = length1.compare(length2);
@@ -99,7 +99,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given36InchIfEqualTo1Yard_ShouldReturnTrue() {
+    public void given36InchAnd1Yard_IfBothAreEqual_ShouldReturnTrue() {
         UnitsConverter length1 = new UnitsConverter(36.0, Units.INCH);
         UnitsConverter length2 = new UnitsConverter(1.0, Units.YARD);
         boolean result = length1.compare(length2);
@@ -107,7 +107,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1YardIfEqualTo3Feet_ShouldReturnTrue() {
+    public void given1YardAnd3Feet_IfBothAreEqual__ShouldReturnTrue() {
         UnitsConverter length1 = new UnitsConverter(1.0, Units.YARD);
         UnitsConverter length2 = new UnitsConverter(3.0, Units.FEET);
         boolean result = length1.compare(length2);
@@ -115,7 +115,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1InchIfEqualTo2Point5Cm_ShouldReturnTrue() {
+    public void given1InchAnd2Point5Cm_IfBothAreEqual_ShouldReturnTrue() {
         UnitsConverter length1 = new UnitsConverter(1.0, Units.INCH);
         UnitsConverter length2 = new UnitsConverter(2.54, Units.CM);
         boolean result = length1.compare(length2);
@@ -208,7 +208,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given1GallonAnd3Point785LitreAfterMergingBothQuantity_IsEqualToProvidedThirdQuantityCheckIfEqual_ShouldReturnTrue() {
+    public void given1GallonAnd3Point785LitreAfterMergingBothQuantity_IsEqualToThirdQuantityCheckIfEqual_ShouldReturnTrue() {
         UnitsConverter volume1 = new UnitsConverter(1.0, Units.GALLON);
         UnitsConverter volume2 = new UnitsConverter(3.785, Units.LITRE);
         UnitsConverter volume3 = new UnitsConverter(7.57, Units.LITRE);
