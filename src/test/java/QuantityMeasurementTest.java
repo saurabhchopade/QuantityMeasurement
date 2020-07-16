@@ -241,12 +241,26 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenLitreAndInch_IfDifferentTypeQuantity_ShouldReturnFalse() throws QuantityException {
+    public void givenLitreAndInch_IfDifferentTypeQuantity_ShouldHandleException() {
         try {
             QuantityMeasurement length1 = new QuantityMeasurement(1.0, Units.LITRE);
             QuantityMeasurement length2 = new QuantityMeasurement(36.0, Units.INCH);
             boolean result = length1.compare(length2);
             Assert.assertFalse(result);
+        } catch (QuantityException e) {
+            Assert.assertEquals(QuantityException.ExceptionType.ILLEGALTYPE, e.type);
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void givenFeetAndMlAfterMergingBothQuantity_IfTypeIsIncompatible_ShouldHandleException() throws QuantityException {
+        try {
+            QuantityMeasurement volume1 = new QuantityMeasurement(1.0, Units.FEET);
+            QuantityMeasurement volume2 = new QuantityMeasurement(1000.0, Units.ML);
+            QuantityMeasurement volume3 = new QuantityMeasurement(2.0, Units.LITRE);
+            boolean result = volume3.compare(volume1, volume2);
+            Assert.assertTrue(result);
         } catch (QuantityException e) {
             Assert.assertEquals(QuantityException.ExceptionType.ILLEGALTYPE, e.type);
             System.out.println(e.getMessage());
